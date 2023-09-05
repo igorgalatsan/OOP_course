@@ -66,20 +66,48 @@ P. S. В данном задании получится дублирование
 PasswordInput. На данном этапе - это нормально.
 '''
 
+# a = "g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr'q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj."
+# a1 = a.replace('k','m')
+# a2 =a1.replace('o','q')
+# a3 = a2.replace('e','g')
+# print(a3)
+
 from string import ascii_lowercase, digits
 
 # здесь объявляйте классы TextInput и PasswordInput
 class TextInput:
+    CHARS = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя " + ascii_lowercase
+    CHARS_CORRECT = CHARS + CHARS.upper() + digits
     def __init__(self,name,size = 10) -> None:
         self.name = name
         self.size = size
     def get_html(self):
-        
+        return print(f"<p class='login'><{self.name}>:<input type='text' size=<{len(self.name)}> />")
+    
+    
+    @classmethod
+    def check_name(cls, name):
+        if 3<len(name)<50  and name in cls.CHARS_CORRECT:
+            return name
+        else:
+            ValueError("некорректное поле name")
+
 class PasswordInput:
+    CHARS = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя " + ascii_lowercase
+    CHARS_CORRECT = CHARS + CHARS.upper() + digits
     def __init__(self,name,size = 10) -> None:
         self.name = name
         self.size = size
 
+    def get_html(self):
+        return print(f"<p class='password'><{self.name}>: <input type='text' size=<{len(self.name)}> />")
+
+    @classmethod
+    def check_name(cls, name):
+        if 3<len(cls.name)<50  and name in cls.CHARS_CORRECT:
+            return name
+        else:
+            ValueError("некорректное поле name")
 class FormLogin:
     def __init__(self, lgn, psw):
         self.login = lgn
