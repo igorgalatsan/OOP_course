@@ -66,11 +66,7 @@ P. S. В данном задании получится дублирование
 PasswordInput. На данном этапе - это нормально.
 '''
 
-# a = "g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr'q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj."
-# a1 = a.replace('k','m')
-# a2 =a1.replace('o','q')
-# a3 = a2.replace('e','g')
-# print(a3)
+
 
 from string import ascii_lowercase, digits
 
@@ -79,35 +75,43 @@ class TextInput:
     CHARS = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя " + ascii_lowercase
     CHARS_CORRECT = CHARS + CHARS.upper() + digits
     def __init__(self,name,size = 10) -> None:
+        self.check_name(name)
         self.name = name
-        self.size = size
+        self.size = len(name)
+        
     def get_html(self):
-        return print(f"<p class='login'><{self.name}>:<input type='text' size=<{len(self.name)}> />")
-    
+        return f"<p class='login'>{self.name}: <input type='text' size={len(self.name)} />"
+                
     
     @classmethod
     def check_name(cls, name):
-        if 3<len(name)<50  and name in cls.CHARS_CORRECT:
-            return name
-        else:
-            ValueError("некорректное поле name")
+        if type(name)!= str or len(name)<3 or len(name) >50:
+            raise ValueError("некорректное поле name")
+        for char in name:
+            if char not in cls.CHARS_CORRECT:
+                raise ValueError("некорректное поле name")
 
 class PasswordInput:
     CHARS = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя " + ascii_lowercase
     CHARS_CORRECT = CHARS + CHARS.upper() + digits
     def __init__(self,name,size = 10) -> None:
+        self.check_name(name)
         self.name = name
         self.size = size
-
+        
     def get_html(self):
-        return print(f"<p class='password'><{self.name}>: <input type='text' size=<{len(self.name)}> />")
 
+        return f"<p class='password'>{self.name}: <input type='text' size={len(self.name)} />"
+                
     @classmethod
     def check_name(cls, name):
-        if 3<len(cls.name)<50  and name in cls.CHARS_CORRECT:
-            return name
-        else:
-            ValueError("некорректное поле name")
+        if type(name)!= str or len(name)<3 or len(name) >50:
+            raise ValueError("некорректное поле name")
+        for char in name:
+            if char not in cls.CHARS_CORRECT:
+                raise ValueError("некорректное поле name")
+    # return True if 2 < len(name) < 51 and re.fullmatch(r'[a-zA-Zа-яА-Я0-9 ]*', name) else False
+    # регулярное выражение можно через него
 class FormLogin:
     def __init__(self, lgn, psw):
         self.login = lgn
