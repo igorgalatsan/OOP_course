@@ -1,15 +1,15 @@
-a = "g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr'q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj."
-b  = 'map'
-table = str.maketrans(
-    "abcdefghijklmnopqrstuvwxyz", "cdefghijklmnopqrstuvwxyzab")
 
-result = b.translate(table)
+# a =set()
+# with open('text.txt') as f:
+#     for i in f.read():
+#         a.add(i)
+#     print(a)
+#aeilqtuy
+f= [2,3,4]
+b = {'l', '&', '%', '<', '*', '-', 'u', '#', '\n', 'e', 
+     'q', '$', ')', 'i', '{', '}', '[', '+', '^', 'a', 't', 
+     '!', '@', ']', '>', '(', 'y', '_'}
+#print(chr(ord('&')+2))
 
-print(result)
-
-raw = "g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle grgl zw fylb gq glcddgagclr ylb rfyr'q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj."
-
-a = "abcdefghijklmnopqrstuvwxyz,. '()"
-b = "cdefghijklmnopqrstuvwxyzab,. '()"
-
-print("".join([dict(zip(a,b))[x] for x in raw]))
+v = list(map(lambda x: chr(ord(x)+2),b))
+print(v)
