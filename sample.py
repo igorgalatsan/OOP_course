@@ -1,15 +1,18 @@
+import urllib.request
+import re
 
-# a =set()
+html = urllib.request.urlopen("http://www.pythonchallenge.com/pc/def/ocr.html").read().decode()
+
+data = re.findall("<!--(.*?)-->", html, re.DOTALL)[-1]
+print("".join(re.findall("[A-Za-z]", data)))
+
+
+
+# data =  set()
 # with open('text.txt') as f:
 #     for i in f.read():
-#         a.add(i)
-#     print(a)
-#aeilqtuy
-f= [2,3,4]
-b = {'l', '&', '%', '<', '*', '-', 'u', '#', '\n', 'e', 
-     'q', '$', ')', 'i', '{', '}', '[', '+', '^', 'a', 't', 
-     '!', '@', ']', '>', '(', 'y', '_'}
-#print(chr(ord('&')+2))
-
-v = list(map(lambda x: chr(ord(x)+2),b))
-print(v)
+#         data.add(i)
+# print(list(data))
+# a = "".join(map(str,data))
+# print(a)
+# #"".join(re.findall("[A-Za-z]", data))
